@@ -86,7 +86,7 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'Proyecto',
+            'NAME': 'Proyectodb',
             'USER': 'proyecto_admin',
             'PASSWORD': 'progra2',
             'HOST': 'localhost',
