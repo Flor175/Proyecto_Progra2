@@ -154,11 +154,11 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'Archivos_Subidos')
 
 if DEBUG:
    STATICFILES_DIRS = [ 
-    os.path.join(BASE_DIR, "templates/static"),
+    os.path.join(BASE_DIR, "static"),
     ("automatas", os.path.join(BASE_DIR, "Archivos/static")),
 ]
 else:
-   STATIC_ROOT = os.path.join(BASE_DIR,'templates/static')
+   STATIC_ROOT = os.path.join(BASE_DIR,'static')
 
 
 
