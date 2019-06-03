@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '!uzk#cl!o^fsdcgf7o_llu#w#o=&boo7nccwr8b!otehubfqrj'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['159.65.233.185']
 
@@ -75,24 +75,24 @@ WSGI_APPLICATION = 'Proyecto.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-if DEBUG:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        }
+#if DEBUG:
+ #   DATABASES = {
+ #       'default': {
+ #           'ENGINE': 'django.db.backends.sqlite3',
+ #           'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+ #       }
+ #   }
+#else:
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'proyectodb',
+        'USER': 'proyecto_admin',
+        'PASSWORD': 'progra2',
+        'HOST': 'localhost',
+        'PORT': '',
     }
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'proyectodb',
-            'USER': 'proyecto_admin',
-            'PASSWORD': 'progra2',
-            'HOST': 'localhost',
-            'PORT': '',
-        }
-    }
+}
 
 
 
