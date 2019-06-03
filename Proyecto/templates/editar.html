@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+<header>
+    {% block header %}
+    <p class="lhead"><a href="{% url 'perfil' %}">Regresar</a></p>
+      <p class="lhead"><a href="{% url 'sign_out' %}">Cerrar Sesión</a></p>
+
+    {% endblock %}
+    </header>
+{% block content %}
+  <h2>Editar Perfil</h2>
+  <form action="{% url 'editar' %}" method="post">
+      {% csrf_token %}
+      {% for field in form1 %}
+      <p>
+        {{ field.label_tag }}<br>
+        {{ field }}
+        {% if field.help_text %}
+          <small style="color: grey">{{ field.help_text }}</small>
+        {% endif %}
+        {% for error in field.errors %}
+          <p style="color: red">{{ error }}</p>
+        {% endfor %}
+        {% for strong in field.strong %}
+          <p style="color: red">{{ Noooo }}</p>
+        {% endfor %}
+      </p>
+      {% endfor %}  
+      {% for field in form2 %}
+      <p>
+          {{ field.label_tag }}<br>
+          {{ field }}
+          {% if field.help_text %}
+            <small style="color: grey">{{ field.help_text }}</small>
+          {% endif %}
+          {% for error in field.errors %}
+            <p style="color: red">{{ error }}</p>
+          {% endfor %}
+      </p>
+      {% endfor %}
+    <button type="submit" style="margin-left:20%;">Editar</button>
+  </form>
+  
+{% endblock %}

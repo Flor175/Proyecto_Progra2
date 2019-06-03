@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Archivos Subidos{% endblock %}
+<header>
+        {% block header %}
+          <p class="lhead"><a href="{% url 'bienvenida' %}">Regresar</a></p>
+          <p class="lhead"><a href="{% url 'sign_out' %}">Cerrar Sesión</a></p>
+        {% endblock %}
+        </header>
+{% block content %}
+<h2>Archivos Subidos</h2>
+    {% if documentos %}
+        <ul>
+            {% for document in documentos %}
+                <li><a href="{% url 'leer'  %}?id_ar={{ document.id }}">{{ document.filename }}</a></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No documents.</p>
+    {% endif %}
+{% endblock %}

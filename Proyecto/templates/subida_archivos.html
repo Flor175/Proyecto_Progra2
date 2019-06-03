@@ -1,0 +1,20 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Upload{% endblock %}
+<header>
+    {% block header %}
+      <p class="lhead"><a href="{% url 'bienvenida' %}">Regresar</a></p>
+      <p class="lhead"><a href="{% url 'sign_out' %}">Cerrar Sesión</a></p>
+    {% endblock %}
+    </header>
+    
+{% block content %}
+<h3>Sube un archivo</h3>
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button style="margin-left:20%;" type="submit">Cargar</button>
+</form>
+<p style="margin-left:60%"><a href="{% url 'archivos_subidos' %}">Ver archivos</a></p>
+{% endblock %}

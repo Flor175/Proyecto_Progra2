@@ -1,0 +1,11 @@
+digraph DFA {
+rankdir=LR
+root=s1
+start [shape=point]
+start->s1
+s1 [shape=circle]
+s2 [shape=circle]
+s3 [shape=doublecircle]
+s1->s2 [label="0"]
+s2->s3 [label="1"]
+}

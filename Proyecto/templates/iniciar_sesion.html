@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="limiter" style="margin-left:-50%">
+		<div class="container-login100" >
+			<div class="wrap-login100">
+          <h2 style="margin-left:40%">Iniciar sesión</h2>
+            {% if form.errors %}
+              <p style="color: red">El usuario y la contraseña no coinciden.</p>
+            {% endif %}
+            {% if next %}
+              {% if user.is_authenticated %}
+              <p>Your account doesn't have access to this page. To proceed,
+              please login with an account that has access.</p>
+              {% else %}
+              <p>Por favor inicia sesión.</p>
+              {% endif %}
+            {% endif %}
+  <form action= "{% url 'sign_in' %}"method="post"  style="padding-right:10%; margin-left:35%">
+    {% csrf_token %}
+    <input type="hidden" name="next" value="{{ next }}" />
+    {% for field in form %}
+      <p>
+        {% if field.label_tag %}
+        <span class="label-input100">{{ field.label_tag }} </span><br>
+        {% endif %}
+        <span style="width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        box-sizing: border-box;
+         border-radius: 4px;">{{ field }}</span><br>
+        {% for error in field.errors %}
+          <p style="color: red">{{ error }}</p>
+        {% endfor %}
+        
+        {% if field.help_text %}
+          <p><small style="color: rgb(61, 60, 60)">{{ field.help_text }}</small></p>
+        {% endif %}
+      </p>
+    {% endfor %}
+    <a href="{% url 'sign_up' %}">Regístrate</a>
+    <div class="container-login100-form-btn" style="margin-left:-10%">
+      <div class="wrap-login100-form-btn">
+        <div class="login100-form-bgbtn"></div>
+        <button class="login100-form-btn">
+          Iniciar Sesión
+        </button>
+      </div>
+    </div>
+  </form>
+          </div>
+        </div>
+      </div>
+    
+
+
+
+
+
+
+
+
+
+
+  
+{% endblock %}
