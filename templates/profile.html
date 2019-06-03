@@ -1,0 +1,36 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Perfil{% endblock %}
+  <header>
+  {% block header %}
+    <p class="lhead"><a href="{% url 'bienvenida' %}">Regresar</a></p>
+    <p class="lhead"><a href="{% url 'sign_out' %}">Cerrar Sesión</a></p>
+  {% endblock %}
+  </header>
+{% block content %}
+{% if user.is_authenticated %}
+  <h1>Hola {{ usuario.username }}!   </h1>
+  <div class="container">
+    <h1>Perfil</h1>
+    <p>Usuario: {{ usuario.username }}</p>
+    <p>Email: {{ usuario.email }}</p>
+    <p>Número de carnet: {{ usuario.perfil.numero_carnet }}</p>
+    <p>Cui: {{ usuario.perfil.cui }}</p>
+    <p>Profesión: {{ usuario.perfil.profesion }}</p>
+    <p>id: {{ usuario.id }}</p>
+  </div>
+  
+  <p style="text-align:center;"><a href="{% url 'editar' %}">Editar</a></p>
+
+    
+  </div>  
+  {% else %}
+  <div class="container">
+    <p>No has iniciado sesión</p>
+    <a href="{% url 'sign_in' %}">login</a> |
+    <a href="{% url 'sign_up' %}">signup</a>
+  </div>  
+  {% endif %}
+  
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block title %}Registro{% endblock %} 
+<header>
+    {% block header %}
+      <p class="lhead"><a href="{% url 'sign_in' %}">Regresar</a></p>
+    {% endblock %}
+    </header>
+{% block content %}
+  <h2>Registro</h2>
+  <div class="limiter" style="margin-left:-50%">
+		<div class="container-login100" >
+			<div class="wrap-login100">
+  <form action="{% url 'sign_up' %}" method="post">
+      {% csrf_token %}
+      {% for field in form1 %}
+      <p>
+        {{ field.label_tag }}<br>
+        {{ field }}
+        {% if field.help_text %}
+          <small style="color: grey">{{ field.help_text }}</small>
+        {% endif %}
+        {% for error in field.errors %}
+          <p style="color: red">{{ error }}</p>
+        {% endfor %}
+      </p>
+      {% endfor %}  
+      {% for field in form2 %}
+      <p>
+          {{ field.label_tag }}<br>
+          {{ field }}
+          {% if field.help_text %}
+            <small style="color: grey">{{ field.help_text }}</small>
+          {% endif %}
+          {% for error in field.errors %}
+            <p style="color: red">{{ error }}</p>
+          {% endfor %}
+      </p>
+      {% endfor %}
+      <div class="container-login100-form-btn">
+        <div class="wrap-login100-form-btn">
+          <div class="login100-form-bgbtn"></div>
+          <button type="submit"  class="login100-form-btn">
+            Registrar
+          </button>
+          </div>
+        </div>
+      </div>
+
+  </form>
+</div>
+</div>
+</div>
+
+{% endblock %}

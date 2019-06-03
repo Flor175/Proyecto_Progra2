@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}Archivo Editado{% endblock %}
+<header>
+        {% block header %}
+          <p class="lhead"><a href="{% url 'leer' %}">Regresar</a></p>
+          <p class="lhead"><a href="{% url 'sign_out' %}">Cerrar Sesión</a></p>
+        {% endblock %}
+        </header>
+        
+{% block content %}
+<h1>Archivo Editado  </h1>
+<p>El archivo  {{ id_a }} dice:  </p> <br>
+<form action="{% url 'analizar' %}"  method="post" >
+    {% csrf_token %}
+    <div style="background-color:white;padding:30px; margin-left:-15%; margin-top:0%; margin-right:10%">
+        <p style="color:black">{{ texto }} </p>
+    </div>
+    <input hidden type="text" name="id_ar" value="{{ id_a}}" style=" margin-top:-5%" ><br>
+    <button type="submit" class="acciones"style="margin-left:675px; margin-top:5%;">Analizar</button>
+</form>
+<form action="{% url 'regex' %}"  method="POST" style=" margin-top:-4%" >
+    {% csrf_token %}
+    <input hidden type="text" name="id_ar" value="{{ id_a}}"  ><br>
+    <button class="acciones" type="submit"style="margin-left:820px; margin-top:-15%">Crear Expresión Regular</button>
+ </form>
+
+
+
+
+{% endblock content %} 
+

@@ -1,0 +1,23 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Texto Analizado{% endblock %}
+<header>
+        {% block header %}
+          <p class="lhead"><a href="{% url 'archivos_subidos' %}">Regresar</a></p>
+          <p class="lhead"><a href="{% url 'sign_out' %}">Cerrar Sesión</a></p>
+        {% endblock %}
+        </header>
+{% block content %}
+<h1>Texto Analizado  </h1>
+<p style="margin-left:10%">Estas palabras coinciden con la expresión regular {{ expresion}} : </p>
+<div style="background-color:white;padding:50px;margin-left:15%; margin-top:0%; margin-right:10%">
+    <p>
+        {% for line in lista %}
+            {{line|safe }}  <br>
+        {% endfor %}
+    </p>
+</div>    
+{% endblock content %} 
+
+

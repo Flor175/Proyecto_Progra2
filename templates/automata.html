@@ -1,0 +1,23 @@
+
+{% extends 'base.html' %}
+{% load static %}
+<header>
+        {% block header %}
+          <p class="lhead"><a href="{% url 'leer' %}">Regresar</a></p>
+          <p class="lhead"><a href="{% url 'sign_out' %}">Cerrar Sesión</a></p>
+        {% endblock %}
+</header>
+
+{% block content %}
+<h1>Autómata </h1>
+<p style="font-size:125%; margin-left:15%">Expresión regular: {{ expresion }}</p>
+
+<img style="margin-left: 15%; height:40%; width:40%;" src="{% static 'automatas/afd.png' %}" />
+
+<form action="{% url 'analizado' %}"  method="GET" >
+    {% csrf_token %}
+    <input hidden type="text" name="id_ar" value="{{ id_a}}"  ><br>
+    <input hidden type="text" name="expresion" value="{{ expresion}}"  ><br>
+    <button type="submit" class="acciones"style="margin-left:100px; margin-top:0.6%;">Guardar</button>
+</form>
+{% endblock content %}

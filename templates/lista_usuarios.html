@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Lista de Usuarios{% endblock %}
+<header>
+        {% block header %}
+          <p class="lhead"><a href="{% url 'bienvenida' %}">Regresar</a></p>
+          <p class="lhead"><a href="{% url 'sign_out' %}">Cerrar Sesión</a></p>
+        {% endblock %}
+        </header>
+
+{% block content %}
+<h1>Usuarios </h1>
+{% if user.is_authenticated %}
+
+    {% if user.is_superuser %}                      
+        <ul style="margin-left:15%">
+            {% for usuario in usuarios %}  
+            <li><a href="{% url 'perfil'  %}">{{ usuario.username }}    </a></li>Id del usuario: {{ usuario.id }}
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No hay usuarios</p>  
+    {% endif %}
+{% else %}  
+    <p>No eres admin</p> 
+{% endif %}
+{% endblock %}

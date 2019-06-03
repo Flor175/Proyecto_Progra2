@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Lista de Archivos{% endblock %}
+<header>
+        {% block header %}
+          <p class="lhead"><a href="{% url 'bienvenida' %}">Regresar</a></p>
+          <p class="lhead"><a href="{% url 'sign_out' %}">Cerrar Sesión</a></p>
+        {% endblock %}
+        </header>
+{% block content %}
+<h3>Archivos </h3>
+{% if user.is_authenticated %}
+
+    {% if user.is_superuser %}                      
+        <ul>
+            {% for archivo in archivos %}
+            <li><a href="{% url 'leer'  %}?id_ar={{ archivo.id }}">{{ archivo.filename }} </a></li> Subido por: {{ archivo.user_id }}
+            {% endfor %} 
+        </ul>
+    {% else %}
+        <p>No hay documentos</p>  
+    {% endif %}
+{% else %}  
+    <p>No eres admin</p> 
+{% endif %}
+{% endblock %}

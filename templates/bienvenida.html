@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}Bienvenida{% endblock %} 
+<header>
+    {% block header %}
+      <p class="lhead"><a href="{% url 'sign_out' %}">Cerrar Sesión</a></p>
+    {% endblock %}
+    </header>
+{% block content %}
+{% if user.is_authenticated %}
+<h2>Bienvenido {{ usuario.username }}  </h2>
+<p class="linea">Elige una acción: </p>
+    {% if user.is_superuser %}
+    <div class="container">
+    <p><a href="{% url 'usuarios' %}">Ver usuarios</a></p> 
+    <p><a href="{% url 'perfil' %}">Ver perfil</a></p>
+    <p><a href="{% url 'subida_archivos' %}">Subir archivo</a></p>
+    <p><a href="{% url 'archivos' %}">Ver archivos</a></p>
+    </div>
+    {% else %}
+    <div class="container">
+    <p><a href="{% url 'perfil' %}">Ver perfil</a></p>
+    <p><a href="{% url 'subida_archivos' %}">Subir archivo</a></p> 
+    <p><a href="{% url 'archivos_subidos' %}">Ver archivos</a></p>
+    </div>
+    {% endif %}
+{% else %}
+  <h2>No has iniciado sesión</h2>
+  <div class="container">
+  <a href="{% url 'sign_in' %}">login</a> |
+  <a href="{% url 'sign_up' %}">signup</a>
+  </div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}Editar Archivo{% endblock %}
+<header>
+        {% block header %}
+          <p class="lhead"><a href="{% url 'archivos_subidos' %}">Regresar</a></p>
+          <p class="lhead"><a href="{% url 'sign_out' %}">Cerrar Sesión</a></p>
+        {% endblock %}
+        </header>
+{% block content %}
+<h1>Editar Archivo   </h1>
+<p style="font-size:120%">El archivo  {{ id_a }} dice:  </p> <br>
+<form action="{% url 'guardar' %}"  method="post" >
+    {% csrf_token %}
+    <textarea  name="texto" value="" rows="15" cols="75" style="margin-left:5%; margin-top: -5%; font-size: 125% " >{{ contenido}}</textarea><br>
+    <input hidden type="text" name="id_ar" value="{{ id_a}}"  ><br>
+    <button class="acciones" type="submit" style="margin-left:530px; margin-top:0%; ">Guardar</button>
+</form>
+<form action="{% url 'analizar' %}"  method="post" style=" margin-top:-7%" >
+        {% csrf_token %}
+        <textarea  hidden name="texto" value="" rows="25" cols="100" >{{ contenido}}</textarea><br>
+        <input hidden type="text" name="id_ar" value="{{ id_a}}"  ><br>
+        <button type="submit" class="acciones"style="margin-left:675px; margin-top:0.6%;" >Analizar</button>
+</form>
+
+<form action="{% url 'regex' %}" method="post" style=" margin-top:-5%" >
+        {% csrf_token %}
+        <input hidden type="text" name="id_ar" value="{{ id_a}}"  ><br>
+        <button class="acciones" type="submit"style="margin-left:820px; margin-top:0%">Crear Expresión Regular</button>
+ </form>
+
+{% endblock content %} 

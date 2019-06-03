@@ -1,0 +1,26 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Crea tu expresión regular{% endblock %}
+<header>
+        {% block header %}
+          <p class="lhead"><a href="{% url 'leer' %}">Regresar</a></p>
+          <p class="lhead"><a href="{% url 'sign_out' %}">Cerrar Sesión</a></p>
+        {% endblock %}
+</header>
+
+{% block content %}
+  <p style="font-size:20px">Ingresa la expresión regular: </p>
+<form action="{% url 'regex' %}" method="POST" name="regex" value=" " style="margin-left:50%"> 
+{% csrf_token %}
+    {% for field in form %}
+       {{ field }}<br>
+        {% for error in field.errors %}
+          <p style="color: black; font-style:bolder; text-align:left">{{ error }}</p>
+        {% endfor %}
+    {% endfor %}
+<input hidden type="text" name="id_ar" value="{{ id_a}}"  ><br>    
+<button class="acciones" type="submit" style="margin-left:150px; margin-top:0%;">Validar</button>
+</form>
+
+{% endblock content %}
