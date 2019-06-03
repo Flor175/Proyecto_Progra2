@@ -158,7 +158,7 @@ if DEBUG:
     ("automatas", os.path.join(BASE_DIR, "Archivos/static")),
 ]
 else:
-   STATIC_ROOT = os.path.join(BASE_DIR,'static')
+   STATIC_ROOT = os.path.join(BASE_DIR,'templates/static')
 
 
 
