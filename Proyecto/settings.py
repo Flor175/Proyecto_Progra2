@@ -144,7 +144,7 @@ LOGIN_REDIRECT_URL = '/Inicio/'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'loginproyecto2018@gmail.com'
-EMAIL_HOST_PASSWORD = 'Programacion2'
+EMAIL_HOST_PASSWORD = 'hsxztmbomlqrwrmh'
 EMAIL_PORT = 587
 
 PASSWORD_RESET_TIMEOUT = 600
